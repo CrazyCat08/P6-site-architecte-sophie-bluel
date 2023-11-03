@@ -1,3 +1,10 @@
+:root {
+	/* Colors */
+	--GreenColor: #1D6154;
+	--Browncolor: #93532F;
+	--LBrownColor: #B1663C;
+}
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -125,6 +132,35 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+.filters {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	margin: 51px auto;
+}
+
+.filter__btn {
+	height: 37px;
+	border-radius: 60px;
+	border: 1px solid var(--GreenColor);
+	color: var(--GreenColor);
+	background-color: white;
+	padding: 9px auto;
+	min-width: 100px;
+	max-width: 198px;
+	font-family: 'Syne';
+	font-size: 16px;
+	font-weight: 700;
+	cursor: pointer;
+}  
+
+.filter__btn--active {
+	color: white;
+	background-color: var(--GreenColor);
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
