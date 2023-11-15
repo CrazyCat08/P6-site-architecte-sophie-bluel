@@ -1,17 +1,29 @@
 // Génération dynamique des projets
 
+// Récupération de l'élément du DOM (div "gallery") qui accueillera les projets
+const gallery = document.querySelector(".gallery"); 
+
 //Récupération des projets (works) éventuellement stockés dans le localStorage
 let projects = window.localStorage.getItem("projects");
 
 if (projects === null) {
-    // Récupération des projets depuis l'API
-    const response = await fetch("http://localhost:5678/api/works");
-    // Transformation de response en liste d'objets
-    const projects = await response.json();
-    // Transformation des projets en JSON
-    const valueProjects = JSON.stringify(projects);
-    // Stockage des informations dans le localStorage
-    window.localStorage.setItem("projects", valueProjects);
+    try {
+        // Récupération des projets depuis l'API
+        const response = await fetch("http://localhost:5678/api/works");
+        // Transformation de response en liste d'objets
+        const projects = await response.json();
+        // Transformation des projets en JSON
+        const valueProjects = JSON.stringify(projects);
+        // Stockage des informations dans le localStorage
+        window.localStorage.setItem("projects", valueProjects);
+    } catch {
+        const p = document.createElement("p");
+        p.classList.add("error");
+        p.innerHTML = "Une erreur est survenue lors de la récupération des projets<br><br>Une tentative de reconnexion automatique auras lieu dans une minute<br><br><br><br>Si le problème persiste, veuillez contacter l'administrateur du site";
+        gallery.appendChild(p);
+        await new Promise(resolve => setTimeout(resolve, 60000));
+        window.location.href = "index.html";
+    }
 } else {
     projects = JSON.parse(projects);
 }
@@ -43,10 +55,8 @@ generateProjects(projects);
 // Gestion des boutons de filtre sur les projets
 
 const filterButtons = document.querySelectorAll(".filter__btn");
-console.log(filterButtons);
 
 const objetsButton = document.querySelector(".filter__btn-id-1");
-console.log(objetsButton);
 
 objetsButton.addEventListener("click", function () {
     for (let i = 0; i < filterButtons.length; i++) {
@@ -56,13 +66,12 @@ objetsButton.addEventListener("click", function () {
 
     const filteredProjects = projects.filter(function (project) {
         return project.categoryId == 1;
-    });
+    });     
     document.querySelector(".gallery").innerHTML = "";
     generateProjects(filteredProjects);
 });
 
 const appartementsButton = document.querySelector(".filter__btn-id-2");
-console.log(appartementsButton);
 
 appartementsButton.addEventListener("click", function () {
     for (let i = 0; i < filterButtons.length; i++) {
@@ -78,7 +87,6 @@ appartementsButton.addEventListener("click", function () {
 });
 
 const hotelsButton = document.querySelector(".filter__btn-id-3");
-console.log(hotelsButton);
 
 hotelsButton.addEventListener("click", function () {
     for (let i = 0; i < filterButtons.length; i++) {
@@ -94,7 +102,6 @@ hotelsButton.addEventListener("click", function () {
 });
 
 const tousButton = document.querySelector(".filter__btn-id-def");
-console.log(tousButton);
 
 tousButton.addEventListener("click", function () {
     for (let i = 0; i < filterButtons.length; i++) {
