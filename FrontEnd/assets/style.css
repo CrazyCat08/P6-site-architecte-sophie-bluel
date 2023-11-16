@@ -160,7 +160,8 @@ li:hover {
 	border: 1px solid var(--GreenColor);
 	color: var(--GreenColor);
 	background-color: white;
-	padding: 9px auto;
+	padding-top: 9px;
+	padding-bottom: 9px;
 	min-width: 100px;
 	max-width: 198px;
 	font-family: 'Syne';
@@ -185,7 +186,6 @@ li:hover {
 
 .gallery img {
 	width: 100%;
-
 }
 
 /* Formulaire de contact*/
@@ -315,7 +315,6 @@ footer nav ul {
 	left: 0;
 	top: 0; */
 	/* margin: 0 auto; */
-
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -407,18 +406,20 @@ footer nav ul {
 	border-radius: 10px;
 	/* animation: slideFromTop 0.3s both; */
 	box-sizing: border-box;
+	position: relative;
 }
 
-.modal-wrapper h2{
+.modal-wrapper h2 {
 	display: flex;
 	justify-content: center;
-	margin: 60px 0 46px 0;
+	margin: 30px 0 46px 0;
 }
 
 .js-modal-close {
-	/* width: 100%; */
-	display: flex;
-	justify-content: flex-end;
+	position: absolute;
+	top: 26px;
+	right: 30px;
+
 }
 
 .fa-xmark {
@@ -427,16 +428,20 @@ footer nav ul {
 }
 
 .js-projects-admin {
-	width: 68%;
+	width: 420px;
 	margin: 10px auto;
 	display: grid;
-	/* grid-template-columns: repeat(5, 1fr); */
-	grid-template-columns: repeat(1, 1fr);
+	grid-template-columns: repeat(5, 1fr);
 	grid-column-gap: 6px;
 	grid-row-gap: 24px;
 }
 
-
+.modal-line {
+	width: 420px;
+	height: 1px;
+	background-color: #B3B3B3;
+	margin: 40px 0;
+}
 
 .js-project-div {
 	display: flex;
@@ -448,7 +453,7 @@ footer nav ul {
 }
 
 .js-project-div img {
-	/* width: 100%; */
+	width: 100%;
 	/* height: 104px; */
 	margin: auto;
 	flex: 1;
@@ -466,8 +471,6 @@ footer nav ul {
 	height: 19px;
 	background: #000000;
 	border-radius: 2px;
-	justify-content: center;
-	align-items: center;
 	cursor: pointer;
 }
 
@@ -476,8 +479,6 @@ footer nav ul {
 	margin: auto
 }
 
-
-
 .open-projectModal {
 	display: flex;
 	justify-content: center;
@@ -485,7 +486,6 @@ footer nav ul {
 	width: 237px;
 	height: 36px;
 	flex-shrink: 0;
-	margin: 0px auto 20px auto;
 	background: #1D6154;
 	border-radius: 60px;
 	border: none;
@@ -503,10 +503,14 @@ footer nav ul {
 	align-items: center;
 	width: 630px;
 	height: 670px;
-	padding: 20px;
+	padding: 30px;
 	background-color: white;
 	border-radius: 10px;
 	position: sticky;
+}
+
+.project-modal-wrapper h2 {
+	margin: 30px 0 36px 0;
 }
 
 .modal-project-logos {
@@ -519,6 +523,7 @@ footer nav ul {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	position: relative;
 }
 
 .form-photo-container {
@@ -526,16 +531,15 @@ footer nav ul {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-
-	background-color: #E8F1F7;
-	width: 500px;
-	height: 200px;
-	border-radius: 10px;
+	background-color: #E8F1F6;
+	width: 420px;
+	height: 169px;
+	border-radius: 3px;
 }
 
 .form-photo-container i {
-	color: #306685;
-	font-size: 90px;
+	color: #B9C5CC;
+	font-size: 76px;
 	font-weight: 100;
 	margin: 20px;
 	margin-top: -25px;
@@ -549,8 +553,8 @@ footer nav ul {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 200px;
-	height: 40px;
+	width: 173px;
+	height: 36px;
 	background-color: #CBD6DC;
 	border-radius: 50px;
 	margin-top: -10px;	
@@ -558,6 +562,70 @@ footer nav ul {
 	color: #306685;
 	cursor: pointer;
 }
+
+.form-photo-container::after {
+	content: "jpg, png : 4mo max";
+	font-size: 10px;
+	font-weight: 400;
+	position: absolute;
+	top: 138px;
+}
+
+.form-photo-title,
+.form-category-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-photo-title label {
+	margin: 30px 0 10px 0;
+}
+
+.form-photo-title input {
+	width: 420px;
+	height: 51px;
+	border: none;
+	background-color: white;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+}
+
+.form-category-container label {
+	margin: 21px 0 10px 0;
+}
+
+.form-category-container select {
+	width: 420px;
+	height: 51px;
+	border: none;
+	background-color: white;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+}
+
+.modal-project-form input[type="submit"]{
+	text-align: center;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #A7A7A7;
+	border: none;
+	margin-top: 90px;
+	width: 237px;
+	height: 36px;
+	border-radius: 60px ;
+}
+
+.modal-project-form::after {
+	content: "";
+	width: 420px;
+	height: 1px;
+	background-color: #B3B3B3;
+	border-top: 1px solid #B3B3B3;
+	position: absolute;
+	top: 421px;
+}
+
+
+
 
 
 

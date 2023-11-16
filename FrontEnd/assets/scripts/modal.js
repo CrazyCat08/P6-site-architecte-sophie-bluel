@@ -1,6 +1,3 @@
-// refactoriser works.js et 
-// ajouter un import de la fonction qui génère des projets
-
 // Récupération de l'élément modale
 const modal = document.querySelector(".modal");
 
@@ -64,13 +61,14 @@ export function generateModalProjects(projects){
     for (let i = 0; i < projects.length; i++) {
         // Création de la div qui va contenir le projet
         const projectDiv = document.createElement("div");
-        projectDiv.classList.add(".js-project-div");
+        projectDiv.classList.add("js-project-div");
         modalGallery.appendChild(projectDiv);
 
         const img = document.createElement("img");
         img.src = projects[i].imageUrl;
         img.alt = projects[i].title;
         projectDiv.appendChild(img);
+        console.log(projects[i].id)
 
         const iconTrashDiv = document.createElement("div");
         iconTrashDiv.classList.add("js-trash-div");
@@ -83,14 +81,14 @@ export function generateModalProjects(projects){
         iconTrash.classList.add("fa-trash-can");
         iconTrashDiv.appendChild(iconTrash);
 
-        console.log(modalGallery)
+        // console.log(modalGallery);
     }
 };
 
 generateModalProjects(projects);
 
 
-// Ajout d'un EventListener sur le bouton ajouter photo
+// Ajout d'un EventListener sur le bouton "ajouter photo"
 const addPhotoButton = document.querySelector(".open-projectModal");
 addPhotoButton.addEventListener("click", (event)=> {
     // Fermeture de la modale "Gallerie de photo"
@@ -98,3 +96,4 @@ addPhotoButton.addEventListener("click", (event)=> {
     // Ouverture de la modale "Ajout de photo"
     projectModalWrapper.style.display = "flex"
 });
+

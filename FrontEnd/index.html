@@ -23,7 +23,7 @@
 			<i class="fa-solid fa-pen-to-square"></i>
 			<p>Mode édition</p>
 		</div>
-		<button>Publier les modifications</button>
+		<!-- <button>Publier les modifications</button> -->
 	</section>
 
 	<!-- Modales -->
@@ -36,6 +36,7 @@
 			<div class="js-projects-admin">
 				<!-- generation dynamique de la galerie de photos -->
 			</div>
+			<div class="modal-line"></div>
 			<a href="#projectModal" class="open-projectModal">Ajouter une photo</a>
 		</div>
 
@@ -48,21 +49,22 @@
 					<i class="fa-solid fa-xmark"></i>
 				</a>
 			</div>
-			<h2>Ajout d'un projet</h2>
+			<h2>Ajout photo</h2>
 
-			<form class="modal-project-form" action="" enctype="multipart/form-data">
+			<form class="modal-project-form" action=""  method="post" enctype="multipart/form-data">
 				<div class="form-photo-container">
 					<i class="fa-regular fa-image"></i>
-				<label for="photo">+ Ajouter une photo</label>
-				<input type="file" name="photo" id="photo" class="js-photo">
+					<label for="photo">+ Ajouter une photo</label>
+					<input type="file" name="photo" id="photo" class="js-photo">
+					<!-- <p>jpg, png : 4mo max</p> -->
 				</div>
 	
-				<div class="form-title">
+				<div class="form-photo-title">
 					<label for="titre">Titre</label>
 					<input class="js-title" type="text" name="titre" id="titre">
 				</div>
 	
-				<div class="form-id-container">
+				<div class="form-category-container">
 					<label for="categorie">Catégorie</label>
 					<select class="js-categoryId" name="categorie" id="categorie">
 						<option value="1">Objets</option>
@@ -71,7 +73,7 @@
 					</select>
 				</div>
 	
-				<input type="submit" class="js-add-project" value="Ajouter le projet">
+				<input type="submit" class="js-add-photo" value="Valider">
 			</form>
 		</div>
 	</aside>
