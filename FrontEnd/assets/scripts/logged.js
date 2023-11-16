@@ -5,7 +5,6 @@ const editionBanner = document.querySelector(".edition__banner");
 const loginLink = document.getElementById("login-link");
 loginLink.style.fontSize = "1.2em";
 const goToModal = document.getElementById("goToModal");
-console.log(goToModal);
 
 
 
