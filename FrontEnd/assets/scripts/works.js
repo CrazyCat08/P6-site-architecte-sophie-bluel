@@ -28,7 +28,7 @@ if (projects === null) {
     projects = JSON.parse(projects);
 }
 
-function generateProjects(projects) {
+export function generateProjects(projects) {
     // Récupération de l'élément du DOM (div "gallery") qui accueillera les projets
     const gallery = document.querySelector(".gallery"); 
     

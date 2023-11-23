@@ -1,3 +1,5 @@
+import { generateProjects } from "./works.js";
+
 // Récupération de l'élément modale
 const modal = document.querySelector(".modal");
 
@@ -6,6 +8,7 @@ const openModalButton = document.getElementById("goToModal");
 
 // Récupération de l'élément bouton qui permet de fermer la modale
 let closeModalButton = document.querySelector(".js-modal-close");
+ 
 
 // Récupération de l'élément modal wrapper
 const modalWrapper = document.querySelector(".modal-wrapper");
@@ -45,6 +48,7 @@ window.addEventListener("keydown", (event) => {
     }
 });
 
+
 // Récupération des projets depuis l'API
 const response = await fetch("http://localhost:5678/api/works");
 // Transformation de response en liste d'objets
@@ -68,7 +72,6 @@ export function generateModalProjects(projects){
         img.src = projects[i].imageUrl;
         img.alt = projects[i].title;
         projectDiv.appendChild(img);
-        console.log(projects[i].id)
 
         const iconTrashDiv = document.createElement("div");
         iconTrashDiv.classList.add("js-trash-div");
@@ -80,20 +83,104 @@ export function generateModalProjects(projects){
         iconTrash.classList.add("fa-xs");
         iconTrash.classList.add("fa-trash-can");
         iconTrashDiv.appendChild(iconTrash);
-
-        // console.log(modalGallery);
     }
 };
 
 generateModalProjects(projects);
 
 
+
+// Récupération du token
+const token = localStorage.getItem("token");
+console.log(token);
+
+
+// Ajout fonctionnalité de suppression de photo
+
+export function deleteProject () {
+    const deleteButtons = document.querySelectorAll(".js-trash-div");
+    deleteButtons.forEach(button => {
+        button.addEventListener("click", async () => {
+            let id = button.getAttribute("id");
+            fetch (`http://localhost:5678/api/works/${id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+            })
+            .then(async (response) => {
+                if (response.ok) {
+                    const response = await fetch("http://localhost:5678/api/works");
+                    const projects = await response.json();
+                    // Rafraichissement dynamique de la page d'accueil et de la modale
+                    generateProjects(projects);
+                    generateModalProjects(projects);
+                    deleteProject ();
+                    console.log(projects);
+                }
+                else {
+                    alert("Une erreur s'est produite");
+                }
+            })    
+        })
+    })
+};
+
+deleteProject();
+
+
+
 // Ajout d'un EventListener sur le bouton "ajouter photo"
 const addPhotoButton = document.querySelector(".open-projectModal");
 addPhotoButton.addEventListener("click", (event)=> {
+    event.preventDefault();
     // Fermeture de la modale "Gallerie de photo"
     modalWrapper.style.display = "none";
     // Ouverture de la modale "Ajout de photo"
     projectModalWrapper.style.display = "flex"
+    
+    //Reset du formulaire d'ajout de photo
+    document.querySelector(".modal-project-form").reset()
+    document.querySelector(".form-photo-container").style.background = "#E8F1F6";
+    document.querySelector(".fa-image").style.display = "block";
+    document.querySelector(".photo-label").style.display = "flex";
+    document.querySelector(".upload-specs").style.display = "block";
+    let photo = document.getElementById("photo");
+    if (photo.files && photo.files[0]) {
+        photo.files[0] = null;
+    }
+    // récupération de l'élément qui permet de fermer la modale d'ajout de projet
+    let closeModalButton2 = document.querySelector(".js-modal-close2");
+    // Récupération de l'élément flèche qui permet de revenir à la galerie photo
+    let goBackToGallery = document.querySelector(".js-modal-goback")
+    // Ajout d'un event listener sur la flèche pour revenir à la galerie photo
+    goBackToGallery.addEventListener ("click", (e) => {
+        e.preventDefault();
+        // Fermeture de la modale "Ajout de photo"
+        projectModalWrapper.style.display = "none";
+        // Ouverture de la modale "Gallerie de photo"
+        modalWrapper.style.display = "flex";
+    });
+    
+    // Fermeture de la modale "Ajout de photo"
+    closeModalButton2.addEventListener("click", (event) => {
+        event.preventDefault();
+        modal.style.display = "none";
+    });
 });
 
+
+// Fonction de recherche de l'id de la catégorie
+const searchIdCategory = (category) => {
+    return fetch('http://localhost:5678/api/categories')
+    .then(response => response.json())
+    .then(catArray => {
+        for (let i = 0; i < catArray.length; i++) {
+            if (catArray[i].name === category) {
+                return catArray[i].id
+            }
+        }
+    })
+    .catch(console.error);
+}

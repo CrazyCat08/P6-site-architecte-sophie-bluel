@@ -1,10 +1,9 @@
 const loginButton = document.getElementById("submit");
 const getDataError = document.querySelector(".getDataError");
-
+const getToken = document.querySelector(".getToken");
 
 //Envoi des login et password de connexion au serveur
-loginButton.addEventListener("click", (event) => {
-    event.preventDefault();
+loginButton.addEventListener("click", () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const loginData = {
@@ -31,6 +30,8 @@ loginButton.addEventListener("click", (event) => {
         }
     });
 });
+
+
 
 
     

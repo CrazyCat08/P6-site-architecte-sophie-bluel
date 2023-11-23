@@ -227,7 +227,8 @@ margin: auto;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-input[type="submit"]{
+.contact-button,
+.login-button {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
@@ -238,7 +239,8 @@ input[type="submit"]{
 	border-radius: 60px ;
 }
 
-input[type="submit"]:hover{
+.contact-button:hover,
+.login-button:hover {
 	color: var(--GreenColor);
 	background-color: white;
 	border: 1px solid var(--GreenColor) !important;
@@ -289,7 +291,6 @@ footer nav ul {
 
 .login__form input[type="submit"] {
 	height: 36px;
-	width: 179px;
 	margin-top: 37px;
 }
 
@@ -325,16 +326,6 @@ footer nav ul {
 	background-color: black;
 }
 
-.edition__banner button{
-	font-family: 'work sans';
-	font-weight: 550;
-	background-color: white;
-	border-radius: 60px ;
-	padding: 5px 15px;
-	margin: 0 25px;
-	border: none;
-	cursor: pointer;
-}
 
 .edition__banner .edition__mode {
 	color: white;
@@ -349,23 +340,7 @@ footer nav ul {
 /*****************************/
 /********* MODALES ***********/
 /*****************************/
-@keyframes fadeIn {
-	from {opacity: 0;}
-	to {opacity: 1;}
-}
-@keyframes slideFromTop {
-	from {transform: translateY(-75px);}
-	to {transform: translateY(0px);}
-}
 
-@keyframes fadeOff {
-	from {opacity: 1;}
-	to {opacity: 0;}
-}
-@keyframes slideFromBottom {
-	from {transform: translateY(0px);}
-	to {transform: translateY(75px);}
-}
 
 /* Modale galerie photo */
 .modal {
@@ -378,7 +353,6 @@ footer nav ul {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	animation: fadeIn 0.3s both;
 }
 
 .modal h2 {
@@ -404,9 +378,15 @@ footer nav ul {
 	max-height: calc(100vh - 20px);
 	background-color: white;
 	border-radius: 10px;
-	/* animation: slideFromTop 0.3s both; */
 	box-sizing: border-box;
 	position: relative;
+}
+
+.js-modal-close,
+.js-modal-close2 {
+	position: absolute;
+	top: 26px;
+	right: 30px;
 }
 
 .modal-wrapper h2 {
@@ -415,15 +395,9 @@ footer nav ul {
 	margin: 30px 0 46px 0;
 }
 
-.js-modal-close {
-	position: absolute;
-	top: 26px;
-	right: 30px;
-
-}
 
 .fa-xmark {
-	font-size: 20px;
+	font-size: 21px;
 	cursor: pointer;
 }
 
@@ -509,14 +483,20 @@ footer nav ul {
 	position: sticky;
 }
 
-.project-modal-wrapper h2 {
-	margin: 30px 0 36px 0;
-}
-
 .modal-project-logos {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
+}
+
+.js-modal-goback {
+	position: absolute;
+	top: 26px;
+	left: 30px;
+	font-size: 21px;
+}
+
+.project-modal-wrapper h2 {
+	margin: 60px 0 36px 0;
 }
 
 .modal-project-form {
@@ -542,11 +522,7 @@ footer nav ul {
 	font-size: 76px;
 	font-weight: 100;
 	margin: 20px;
-	margin-top: -25px;
-}
-
-.form-photo-container input {
-	display: none;
+	margin-top: 0px;
 }
 
 .form-photo-container label {
@@ -563,12 +539,17 @@ footer nav ul {
 	cursor: pointer;
 }
 
-.form-photo-container::after {
-	content: "jpg, png : 4mo max";
+	
+.form-photo-container input {
+	/* display: none; */
+	display: block;
+}
+
+.upload-specs {
+	display: flex;
 	font-size: 10px;
 	font-weight: 400;
-	position: absolute;
-	top: 138px;
+	margin-top: 7px;
 }
 
 .form-photo-title,
@@ -601,28 +582,25 @@ footer nav ul {
 	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
 }
 
-.modal-project-form input[type="submit"]{
+.addPhotoModal-line {
+	width: 420px;
+	height: 1px;
+	background-color: #B3B3B3;
+	margin: 47px 0 32px 0;
+}	
+
+.js-add-project {
 	text-align: center;
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
 	background-color: #A7A7A7;
 	border: none;
-	margin-top: 90px;
 	width: 237px;
 	height: 36px;
 	border-radius: 60px ;
 }
 
-.modal-project-form::after {
-	content: "";
-	width: 420px;
-	height: 1px;
-	background-color: #B3B3B3;
-	border-top: 1px solid #B3B3B3;
-	position: absolute;
-	top: 421px;
-}
 
 
 

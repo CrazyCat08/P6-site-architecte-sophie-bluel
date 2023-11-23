@@ -12,22 +12,23 @@
 	<!-- Appel du module works.js -->
 	<script type="module" src="./assets/scripts/works.js" defer></script>
 	<script type="module" src="./assets/scripts/logged.js" defer></script> 
-	<script type="module" src="./assets/scripts/modal.js" defer></script> 
+	<script type="module" src="./assets/scripts/modal.js" defer></script>
+	<script type="module" src="./assets/scripts/project-upload-modal.js" defer></script>
+
 	<script src="https://kit.fontawesome.com/73db696eb9.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
 	<!-- Banner mode édition -->
-	<section class="edition__banner edition__mode" aria-hidden="true" style="display: none;">
+	<section class="edition__banner edition__mode" style="display: none;">
 		<div class="edition__mode">
 			<i class="fa-solid fa-pen-to-square"></i>
 			<p>Mode édition</p>
 		</div>
-		<!-- <button>Publier les modifications</button> -->
 	</section>
 
 	<!-- Modales -->
-	<aside id="modal" class="modal" aria-hidden="true" style="display: none;">
+	<aside id="modal" class="modal" style="display: none;">
 		<div class="modal-wrapper">
 			<a href="" class="js-modal-close">
 				<i class="fa-solid fa-xmark"></i>
@@ -40,40 +41,42 @@
 			<a href="#projectModal" class="open-projectModal">Ajouter une photo</a>
 		</div>
 
-		<div id="projectModalWrapper" class="project-modal-wrapper" aria-hidden="true" style="display: none;">
+		<div id="projectModalWrapper" class="project-modal-wrapper" style="display: none;">
 			<div class="modal-project-logos">
 				<a href="" class="js-modal-goback">
 					<i class="fa-solid fa-arrow-left"></i>
 				</a>
-				<a href="" class="js-modal-close">
+				<a href="" class="js-modal-close2">
 					<i class="fa-solid fa-xmark"></i>
 				</a>
 			</div>
 			<h2>Ajout photo</h2>
 
-			<form class="modal-project-form" action=""  method="post" enctype="multipart/form-data">
+			<form class="modal-project-form" method="post" enctype="multipart/form-data">
 				<div class="form-photo-container">
 					<i class="fa-regular fa-image"></i>
-					<label for="photo">+ Ajouter une photo</label>
-					<input type="file" name="photo" id="photo" class="js-photo">
-					<!-- <p>jpg, png : 4mo max</p> -->
+					<label for="photo" class="photo-label">+ Ajouter une photo</label>
+					<input type="file" class="js-photo" name="photo" id="photo"  accept=".jpg, .png">
+					<p class="upload-specs">jpg, png : 4mo max</p>
 				</div>
 	
 				<div class="form-photo-title">
-					<label for="titre">Titre</label>
-					<input class="js-title" type="text" name="titre" id="titre">
+					<label for="title">Titre</label>
+					<input type="text" class="js-title" name="title" id="title">
 				</div>
 	
 				<div class="form-category-container">
-					<label for="categorie">Catégorie</label>
-					<select class="js-categoryId" name="categorie" id="categorie">
+					<label for="category">Catégorie</label>
+					<select class="js-categoryId" name="category" id="category">
 						<option value="1">Objets</option>
 						<option value="2">Appartements</option>
 						<option value="3">Hôtels & restaurants</option>
 					</select>
 				</div>
+
+				<div class="addPhotoModal-line"></div>
 	
-				<input type="submit" class="js-add-photo" value="Valider">
+				<input type="submit" class="js-add-project" value="Valider">
 			</form>
 		</div>
 	</aside>
@@ -99,6 +102,10 @@
 	</nav>
 </header>
 <main>
+	<form action="" method="post">
+		<label for="image1">+ Ajouter une image</label>
+		<input type="file" name="image1" id="image1"  accept=".jpg, .png">
+	</form>
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="">
@@ -113,7 +120,7 @@
 	<section id="portfolio">
 		<div class="portfolio__title">
 			<h2>Mes Projets</h2>
-			<div id="goToModal" class="edition__mode" aria-hidden="true" style="display: none">
+			<div id="goToModal" class="edition__mode" style="display: none">
 				<i class="fa-solid fa-pen-to-square"></i>
 				<a href="#modal">Modifier</a>
 			</div>
@@ -140,7 +147,7 @@
 			<input type="email" name="email" id="email">
 			<label for="message">Message</label>
 			<textarea name="message" id="message" cols="30" rows="10"></textarea>
-			<input type="submit" value="Envoyer">
+			<input class="contact-button" type="submit" value="Envoyer">
 		</form>
 	</section>
 </main>
