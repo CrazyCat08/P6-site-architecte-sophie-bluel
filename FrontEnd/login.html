@@ -10,7 +10,7 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
     <!-- Appel du module login.js -->
-    <script type="module" src="./assets/scripts/login.js" defer></script> 
+    <script src="./assets/scripts/login.js" defer></script> 
 </head>
 <body>
     <header>
@@ -19,18 +19,26 @@
         </a>
         <nav>
             <ul>
-                <a href="index.html#portfolio">
-                    <li>projets</li>
-                </a>
-                <a href="index.html#contact">
-                    <li>contact</li>
-                </a>
-                <a href="login.html" class="currentLink">
-                    <li>login</li>
-                </a>
-                <a href="#" target="_blank">
-                    <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-                </a>
+                <li>
+                    <a href="index.html#portfolio">
+                        projets
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html#contact">
+                        contact
+                    </a>
+                </li>
+                <li>
+                    <a href="login.html" class="currentLink">
+                        login
+                    </a>
+                </li>
+                <li>
+                    <a href="#" target="_blank">
+                        <img src="./assets/icons/instagram.png" alt="Instagram">
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -38,7 +46,6 @@
     <main>
         <section class="login">
             <h2>Log In</h2>
-            <div class="getDataError"></div>
             <form action="" method="" class="login__form" onsubmit="return false">
                 <label for="email">E-mail</label>
                 <input type="email" name="email" id="email" required>

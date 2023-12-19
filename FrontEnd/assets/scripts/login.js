@@ -1,5 +1,4 @@
 const loginButton = document.getElementById("submit");
-const getDataError = document.querySelector(".getDataError");
 const getToken = document.querySelector(".getToken");
 
 //Envoi des login et password de connexion au serveur
@@ -13,7 +12,7 @@ loginButton.addEventListener("click", () => {
 
     const promise = fetch("http://localhost:5678/api/users/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json"},
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify(loginData)
     });
 

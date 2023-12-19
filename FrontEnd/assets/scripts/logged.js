@@ -1,13 +1,13 @@
 // Ici on adapte le layout de la page index.html en fonction du
 // statut de connexion (connecté ou pas)
 
-
 const editionBanner = document.querySelector(".edition__banner");
 const loginLink = document.getElementById("login-link");
-loginLink.style.fontSize = "1.2em";
 const goToModal = document.getElementById("goToModal");
 
 
+// Récupération du token
+const token = localStorage.getItem("token");
 
 // Si le token existe, on fait apparaître la page en mode édition
 // Sinon, c'est le mode visiteur
