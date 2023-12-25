@@ -5,10 +5,6 @@ const editionBanner = document.querySelector(".edition__banner");
 const loginLink = document.getElementById("login-link");
 const goToModal = document.getElementById("goToModal");
 
-
-// Récupération du token
-const token = localStorage.getItem("token");
-
 // Si le token existe, on fait apparaître la page en mode édition
 // Sinon, c'est le mode visiteur
 if (localStorage.getItem("token")) {

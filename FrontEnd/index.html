@@ -8,22 +8,24 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
+	<script src="https://kit.fontawesome.com/73db696eb9.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="./assets/modal.css">
 
 	<script src="./assets/scripts/works.js" defer></script>
 	<script src="./assets/scripts/logged.js" defer></script> 
+	<script src="./assets/scripts/modal.js" defer></script> 
 	
-	<script src="https://kit.fontawesome.com/73db696eb9.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	
 	<!-- Banner mode édition -->
-	<section class="edition__banner edition__mode" style="display: none;">
+	<div class="edition__banner edition__mode">
 		<div class="edition__mode">
 			<i class="fa-solid fa-pen-to-square"></i>
 			<p>Mode édition</p>
 		</div>
-	</section>
+	</div>
 	
 	<!-- Modale -->
 	<aside id="modal" class="modal">
@@ -65,9 +67,7 @@
 					<div class="form-category-container">
 						<label for="category">Catégorie</label>
 						<select class="js-categoryId" name="category" id="category">
-							<option value="1">Objets</option>
-							<option value="2">Appartements</option>
-							<option value="3">Hôtels & restaurants</option>
+							<!-- Génération dynamique du choix des catégories -->
 						</select>
 					</div>
 					
@@ -122,7 +122,7 @@
 		<section id="portfolio">
 			<div class="portfolio__title">
 				<h2>Mes Projets</h2>
-				<div id="goToModal" class="edition__mode" style="display: none">
+				<div id="goToModal" class="edition__mode">
 					<i class="fa-solid fa-pen-to-square"></i>
 					<a href="#modal">Modifier</a>
 				</div>

@@ -1,5 +1,4 @@
 const loginButton = document.getElementById("submit");
-const getToken = document.querySelector(".getToken");
 
 //Envoi des login et password de connexion au serveur
 loginButton.addEventListener("click", () => {
