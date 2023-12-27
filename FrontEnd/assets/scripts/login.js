@@ -1,7 +1,8 @@
 const loginButton = document.getElementById("submit");
 
 //Envoi des login et password de connexion au serveur
-loginButton.addEventListener("click", () => {
+loginButton.addEventListener("click", (e) => {
+    e.preventDefault();
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const loginData = {
